@@ -15,6 +15,7 @@ Angular Cli ile standart bir Angular projesi oluşturalım.
 ng new my-dream-app
 ```
 Projemizde bir AppComponent ve onun içinde birden fazla CardComponent bulunacaktır. Genel yapı aşağıdaki şekilde.
+
 *app.component.html
 ```html
 <app-card [no]="1"></app-card>
@@ -55,7 +56,9 @@ export class AppStoreService {
 }
 ```
 AppStore servisi Injectable olarak belirttik bu sayede onu provider olduğu tüm tüm modüllerde kullanılan componentlere inject edebileceğiz.
+
 Diğer konu AppStore servisinin içinde 'Subject' nesnesi bulunuyor ve bu nesne 'AppStoreModel' clasını tutuyor.
+
 AppStore'un 2 adet fonksiyonu var; next: veriyi Subject içine göndermek için, subscribe: gönderilen verinin alınması için dinleme işlemini yapıyor. subscribe içine gönderdiğimiz fonksiyon ile veri geldiğinde nasıl bir davranış gerçekleştireceğini belirtiyoruz.
 ```javascript
 export class AppStoreModel {
@@ -80,6 +83,7 @@ providers: [AppStoreService],
 ```
 
 Ardından CardComponent i oluşturalım. (card.component.html i yazının başında vermiştim.)
+
 *card/card.component.ts
 ```javascript
 import { Component, Input } from '@angular/core';
