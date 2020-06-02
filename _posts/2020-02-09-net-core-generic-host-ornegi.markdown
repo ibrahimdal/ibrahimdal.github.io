@@ -28,7 +28,7 @@ var host = new HostBuilder()
 
 await host.RunAsync();
 ```
-
+-SampleService.cs
 ```javascript
 //SampleService classını  IHostedService den miras aldırıyoruz. 
 //Bu sayede clasın bir HostService olduğunu belirtiyoruz. 
