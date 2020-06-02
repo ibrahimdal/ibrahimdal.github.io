@@ -26,7 +26,7 @@ Docker hakkında internette tonla kaynak olduğu için bahsetmeyeceğim, sadece 
 Projemizi dockerize etmek için öncelikle bir imaj haline getirmemiz gerekiyor, bunun içinde proje ana dizinine Dockerfile isminde bir dosya oluşturuyorum.
 
 - Dockerfile
-```javascript
+```shell
 #her docker imajı bir başka imajdan miras almak zorundadır.
 #bizde burada npm in gerekliliği olan node'un dockerHub daki imajından miras aldık.
 FROM node:12.16.0 
@@ -74,16 +74,17 @@ Sıra docker imajından konteynır yaratmaya geldi. Bunun için aşağıdaki kom
 ```shell
 docker run --rm sampleangular:dev
 ```
+
 Daha sonra localhost:4200 a girip projemize bakalım, herhangi bir sonuç almadığımızı görüyoruz. Bunun sebebi biz imajı çalıştırdık ama bizim projemiz konteynır içindeki 4200 portundan yayınlanır durumda bizim bu porta kendi host bilgisayarımızdan ulaşmamış için port mapleme yapmamız gerekiyor. 
 
 Aşağıdaki komut ile docker imajını tekrar çalıştıralım. burada host bilgisayarındaki 4201 portunu konteynır içindeki 4200 a maplemiş olduk. http://localhost:4201 adresine girerek projenin çalıştığını görebiliriz.
-```Shell
+```shell
 docker run -p 4201:4200 --rm sampleangular:dev
 ```
 
 Proje çalışırken AppComponent te bir değişiklik yapalım ve projenin bundan etkilenip etkilenmediğine bakalım. Projenin etkilenmediğini görebiliriz. Fakat biz bundan sonra projemizi geliştirme sürecine gireceğiz ve hotreload ile docker konteynır içindeki projeye yansımasını istiyoruz bunun için volume işlemini kullanacağız. Yukarıdaki imajı çalıştırdığımız kodu aşağıdaki hale getiriyoruz.
 
-```Powershell
+```shell
 docker run -v ${PWD}:/app -v ${PWD}/node_modules:/app/node_modules -p 4201:4200 --rm sampleangular:dev
 ```
 Burada konteynırdaki /app içindeki proje dosyalarını ve /node_module host bilgisayarımızdaki dosyalarımız üzerinden çalışması gerektiğini söylüyoruz. Bundan sonra AppComponent te değişiklik yaptığımızda yada projeye yeni bir npm paketi eklediğimizde konteynır içinde çalışan projemiz bundan etkilenecektir. 
@@ -122,7 +123,7 @@ capabilities: {
 ```
 
 konteynır çalışır durumda iken aşağıdaki komut ile konteynır içine komut gönderip testleri çalıştırabiliriz.
-```zsh
+```shell
 docker exec -it <CONTAINER_NAME> ng test --watch=false
 ```
 
@@ -131,7 +132,7 @@ konteynır çalışır durumda iken aşağıdaki komut ile konteynır içine kom
 docker exec -it <CONTAINER_NAME> ng e2e --port 4202 
 ```
 Aşağıdaki komut ile konteynırı durdurabiliriz.
-```console
+```shell
 docker stop <CONTAINER_NAME>
 ```
 
@@ -140,7 +141,7 @@ Buraya kadar herşey güzeldi ama projemizi dockerize ettik ve geliştirme ortam
 Bunun için ana dizine docker-compose.yml dosyası oluşturuyoruz. (Başka tipte teknolojiler kullanırken bu dosyayı ana dizinin bir üstüne oluşturmak daha güzel olacaktır. Çünkü birden fazla projemizi aynı anda tek bir docker-compose dosyasıyla ayağa kaldırmak isteyebiliriz. Ama bu proje için gerekmiyor.)
 
 - docker-compose.yml
-```yml
+```markdown
 version: '3.7'
 
 services:
