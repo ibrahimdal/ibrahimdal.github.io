@@ -128,7 +128,10 @@ Aşağıdaki komut ile konteynırı durdurabiliriz.
 ```shell
 docker stop CONTAINER_NAME
 ```
-Buraya kadar herşey güzeldi ama projemizi dockerize ettik ve geliştirme ortamında docker'ı kullandık. Ama konteynırı çalıştırıken port ve volume mapleme işlemleri gerçekleştirdik, ayrıca yukarda yapmadık ama konteynır oluştururken sabit bir isim de girmemiz yararlı olacaktır. Farklı bir durum belki ama burada biz tek proje çalıştırdık, bu proje çalışırken başka bir servis (mock service) vs ye ihtiyaç duyabilirdi. İşte bunları her zaman yapmak zaman kaybı ve hatalara sebep olacağından docker-compose ile bunları kayıt altına almak güzel olacaktır.
+Buraya kadar herşey güzeldi ama projemizi dockerize ettik ve geliştirme ortamında docker'ı kullandık. 
+Ama konteynırı çalıştırıken port ve volume mapleme işlemleri gerçekleştirdik, ayrıca yukarda yapmadık ama konteynır oluştururken sabit bir isim de girmemiz yararlı olacaktır. 
+Farklı bir durum belki ama burada biz tek proje çalıştırdık, bu proje çalışırken başka bir servis (mock service) vs ye ihtiyaç duyabilirdi. 
+İşte bunları her zaman yapmak zaman kaybı ve hatalara sebep olacağından docker-compose ile bunları kayıt altına almak güzel olacaktır.
 
 Bunun için ana dizine docker-compose.yml dosyası oluşturuyoruz. (Başka tipte teknolojiler kullanırken bu dosyayı ana dizinin bir üstüne oluşturmak daha güzel olacaktır. Çünkü birden fazla projemizi aynı anda tek bir docker-compose dosyasıyla ayağa kaldırmak isteyebiliriz. Ama bu proje için gerekmiyor.
 
