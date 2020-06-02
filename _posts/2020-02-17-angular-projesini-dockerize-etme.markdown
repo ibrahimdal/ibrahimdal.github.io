@@ -118,15 +118,15 @@ capabilities: {
 ```
 Konteynır çalışır durumda iken aşağıdaki komut ile konteynır içine komut gönderip testleri çalıştırabiliriz.
 ```shell
-docker exec -it <CONTAINER_NAME> ng test --watch=false
+docker exec -it CONTAINER_NAME ng test --watch=false
 ```
 konteynır çalışır durumda iken aşağıdaki komut ile konteynır içine komut gönderip e2e testleri çalıştırabiliriz.
 ```shell
-docker exec -it <CONTAINER_NAME> ng e2e --port 4202
+docker exec -it CONTAINER_NAME ng e2e --port 4202
 ```
 Aşağıdaki komut ile konteynırı durdurabiliriz.
 ```shell
-docker stop <CONTAINER_NAME>
+docker stop CONTAINER_NAME
 ```
 Buraya kadar herşey güzeldi ama projemizi dockerize ettik ve geliştirme ortamında docker'ı kullandık. Ama konteynırı çalıştırıken port ve volume mapleme işlemleri gerçekleştirdik, ayrıca yukarda yapmadık ama konteynır oluştururken sabit bir isim de girmemiz yararlı olacaktır. Farklı bir durum belki ama burada biz tek proje çalıştırdık, bu proje çalışırken başka bir servis (mock service) vs ye ihtiyaç duyabilirdi. İşte bunları her zaman yapmak zaman kaybı ve hatalara sebep olacağından docker-compose ile bunları kayıt altına almak güzel olacaktır.
 
