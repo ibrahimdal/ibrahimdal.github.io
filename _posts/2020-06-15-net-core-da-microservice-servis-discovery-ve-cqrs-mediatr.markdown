@@ -2,7 +2,7 @@
 layout: post
 title:  ".Net Core Micro Servis ve CQRS - MediatR"
 description: 
-date:   2020-06-14 22:01:36 +0530
+date:   2020-06-15 18:01:36 +0530
 categories: .NetCore MicroService Swagger
 ---
 Son oluşturduğumuz microservice yapımıza mediatR implementasyonu yapacağız. MediatR ve CQRS ile ilgili daha detaylı bilgileri başka sayfalarda bulabilirsiniz, o yüzden bu konuya fazla değinmeyeceğim.
